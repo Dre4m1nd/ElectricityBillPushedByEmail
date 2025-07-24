@@ -1,0 +1,26 @@
+import smtplib
+import yaml
+from email.mime.text import MIMEText
+from ElectricityBillPushedByEmail.Utils.loggingTools import logger
+
+with open("config.yaml", 'r', encoding='utf-8') as f:
+    config = yaml.safe_load(f)
+
+sender = config['emailsender']['sender']['email']
+authCode = config['emailsender']['sender']['authCode']
+receivers = config['emailsender']['receivers']
+
+
+def makeMessage(subject,content):
+    message = MIMEText(content,"html","utf-8")
+    message['Subject'] = subject
+    message['From'] = sender
+    message['To'] = ';'.join(receivers)
+    logger.info("消息组装完成！")
+    return message
+
+def sendEmail(message):
+    with smtplib.SMTP_SSL('smtp.163.com', 465, local_hostname='localhost') as smtp:
+        smtp.login(sender, authCode)
+        smtp.sendmail(sender, receivers, message.as_string())
+        logger.info(f"发送成功! {'; '.join(receivers)}")
