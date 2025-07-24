@@ -8,3 +8,4 @@
 - emailsender.sender.email: 发送邮箱（默认支持163邮箱）
 - emailsender.sender.authCode: 发送邮箱的授权码
 - emailsender.receivers: 接受邮箱（支持数组）
+> 默认只支持HNU电费提醒
