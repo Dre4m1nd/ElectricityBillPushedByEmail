@@ -1,0 +1,23 @@
+getElectricity:
+  url: "https://sdxt.hainanu.edu.cn/scanQRWaterCtrl_redis_hndx1/service/weixinEle/getEleInfo"
+  openId: ""
+  # 提醒余额限度
+  reminderLimitedByMoney:
+    lighting: 3
+    airConditioning: 2
+
+
+emailsender:
+  # 发送端邮箱及授权码
+  sender:
+    email: ""
+    authCode: ""
+  # 接收端邮箱
+  receivers: [
+    ""
+  ]
+
+
+
+
+
